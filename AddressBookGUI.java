@@ -52,6 +52,11 @@ public class AddressBookGUI extends JFrame {
                 String phone = phoneField.getText();
                 contactBook.addContact(name, email, phone);
                 updateDisplay("");
+                // Clear the input fields
+                nameField.setText("");
+                emailField.setText("");
+                phoneField.setText("");
+
             }
         });
 
