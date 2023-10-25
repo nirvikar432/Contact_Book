@@ -28,4 +28,14 @@ public class ContactBook {
             contacts = (HashMap<String, Contact>) inputStream.readObject();
         }
     }
+
+    public boolean removeContact(String name) {
+        Contact contact = contacts.get(name);
+        if (contact != null) {
+            contacts.remove(name);
+            return true;
+        }
+        return false;
+    }
+
 }

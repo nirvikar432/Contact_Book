@@ -60,6 +60,23 @@ public class AddressBookGUI extends JFrame {
             }
         });
 
+        JButton deleteButton = new JButton("Delete Contact"); // New button
+        deleteButton.setFont(new Font("Arial", Font.PLAIN, 16));
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedName = JOptionPane.showInputDialog("Enter the name to delete:");
+                if (selectedName != null && !selectedName.isEmpty()) {
+                    if (contactBook.removeContact(selectedName)) {
+                        JOptionPane.showMessageDialog(null, "Contact deleted.");
+                        updateDisplay("");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Contact not found.");
+                    }
+                }
+            }
+        });
+
         JPanel searchPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         searchField = new JTextField(20);
         JButton searchButton = new JButton("Search");
@@ -78,6 +95,7 @@ public class AddressBookGUI extends JFrame {
 
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         buttonPanel.add(addButton);
+        buttonPanel.add(deleteButton);
 
         searchPanel.add(searchField);
         searchPanel.add(searchButton);
