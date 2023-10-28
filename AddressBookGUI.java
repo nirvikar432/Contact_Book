@@ -21,20 +21,19 @@ public class AddressBookGUI extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
+        // Code for Input panel
         JPanel inputPanel = new JPanel(new GridLayout(4, 2, 10, 10));
-
         inputPanel.add(new JLabel("Name:"));
         nameField = new JTextField();
         inputPanel.add(nameField);
-
         inputPanel.add(new JLabel("Email:"));
         emailField = new JTextField();
         inputPanel.add(emailField);
-
         inputPanel.add(new JLabel("Phone Number:"));
         phoneField = new JTextField();
         inputPanel.add(phoneField);
 
+        // Code for setting up the application icon
         try {
             BufferedImage iconImage = ImageIO.read(getClass().getResource("add-friend.png"));
             setIconImage(iconImage);
@@ -42,6 +41,7 @@ public class AddressBookGUI extends JFrame {
             e.printStackTrace();
         }
 
+        // Code for ADD CONTACT button
         JButton addButton = new JButton("Add Contact");
         addButton.setFont(new Font("Arial", Font.PLAIN, 16));
         addButton.addActionListener(new ActionListener() {
@@ -52,7 +52,7 @@ public class AddressBookGUI extends JFrame {
                 String phone = phoneField.getText();
                 contactBook.addContact(name, email, phone);
                 updateDisplay("");
-                // Clear the input fields
+                // Clear the input fields after adding the desired contact
                 nameField.setText("");
                 emailField.setText("");
                 phoneField.setText("");
@@ -60,7 +60,8 @@ public class AddressBookGUI extends JFrame {
             }
         });
 
-        JButton deleteButton = new JButton("Delete Contact"); // New button
+        // Code for DELETE CONTACT button
+        JButton deleteButton = new JButton("Delete Contact");
         deleteButton.setFont(new Font("Arial", Font.PLAIN, 16));
         deleteButton.addActionListener(new ActionListener() {
             @Override
@@ -77,6 +78,7 @@ public class AddressBookGUI extends JFrame {
             }
         });
 
+        // Code for the SEARCH PANEL
         JPanel searchPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         searchField = new JTextField(20);
         JButton searchButton = new JButton("Search");
